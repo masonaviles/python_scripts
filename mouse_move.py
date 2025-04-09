@@ -18,4 +18,8 @@ while True:
     
     except pyautogui.FailSafeException:
         print("Fail-safe triggered. Resetting mouse position.")
-        pyautogui.moveTo(pyautogui.size().width // 2, pyautogui.size().height // 2)  # move to center of the screen
+
+        # Temporarily disable the failsafe to reposition the mouse
+        pyautogui.FAILSAFE = False
+        pyautogui.moveTo(pyautogui.size().width // 2, pyautogui.size().height // 2)
+        pyautogui.FAILSAFE = True
